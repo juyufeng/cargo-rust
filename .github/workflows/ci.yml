@@ -24,6 +24,7 @@ jobs:
       uses: Swatinem/rust-cache@v2
 
     - name: 构建Wasm
+      working-directory: ./rust
       run: cargo build --release --target wasm32-wasi
 
     - name: 设置Node.js
@@ -33,13 +34,15 @@ jobs:
         cache: 'npm'
 
     - name: 安装依赖
+      working-directory: ./web
       run: npm ci
 
     - name: 构建前端
+      working-directory: ./web
       run: npm run build
 
     - name: 上传构建产物
       uses: actions/upload-artifact@v3
       with:
         name: wasm-build
-        path: target/wasm32-wasi/release/car_hello_world.wasm
+        path: rust/target/wasm32-wasi/release/car_hello_world.wasm

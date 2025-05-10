@@ -1,57 +1,25 @@
-# Rust相关
-/target/
-target/
-**/target/
-**/*.rs.bk
-Cargo.lock
-.cargo/
+# 项目目录
+/rust/target/
+/web/dist/
+/web/node_modules/
+/web/out/
+/web/release/
 
-# Node.js相关
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-package-lock.json
-
-# TypeScript相关
-*.tsbuildinfo
-dist-ts/
-
-# 构建输出
-/dist/
-/build/
-*.wasm
-public/build/
+# 系统文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # IDE和编辑器
 .idea/
 .vscode/
 *.swp
 *.swo
-.DS_Store
 *.sublime-*
 .project
 .classpath
 .settings/
-
-# 环境变量
-.env
-.env.local
-.env.*.local
-.env.development
-.env.production
-
-# 测试覆盖率
-coverage/
-.nyc_output/
-
-# 日志文件
-*.log
-logs/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # 临时文件
 *.tmp
@@ -60,16 +28,30 @@ yarn-error.log*
 .temp/
 .tmp/
 
-# Electron相关
-.electron-builder.env
-out/
-release/
+# 日志文件
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# 系统文件
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# 环境变量
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# 构建产物
+*.wasm
+*.wasm.map
+*.js.map
+*.d.ts.map
+
+# 测试覆盖率
+coverage/
+.nyc_output/
 
 # 其他
 *.bak

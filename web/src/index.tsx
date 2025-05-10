@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import WasmComponent from './WasmComponent';
+import WasmComponent from '@components/WasmComponent';
 
 /**
  * 应用程序入口
