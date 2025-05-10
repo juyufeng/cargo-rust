@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: 设置Rust工具链
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        target: wasm32-wasi
+        override: true
+
+    - name: 缓存Rust依赖
+      uses: Swatinem/rust-cache@v2
+
+    - name: 构建Wasm
+      run: cargo build --release --target wasm32-wasi
+
+    - name: 设置Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: 安装依赖
+      run: npm ci
+
+    - name: 构建前端
+      run: npm run build
+
+    - name: 上传构建产物
+      uses: actions/upload-artifact@v3
+      with:
+        name: wasm-build
+        path: target/wasm32-wasi/release/car_hello_world.wasm
