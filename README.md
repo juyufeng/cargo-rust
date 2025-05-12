@@ -1,5 +1,9 @@
 # 🚀 Rust + React WebAssembly 演示项目
 
+## 预览
+
+![预览](/web/public/wasm/product.png)
+
 <div align="center">
 
 ![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
