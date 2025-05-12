@@ -9,10 +9,12 @@ authors = ["18321212571@163.com>"]
 crate-type = ["cdylib"]
 
 [dependencies]
-extism-pdk = "1.0"
+extism-pdk = "1.0.0"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
 
 [profile.release]
-opt-level = 3
+opt-level = "s"
 lto = true
 
 [target.wasm32-wasi]

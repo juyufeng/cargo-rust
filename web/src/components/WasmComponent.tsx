@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPlugin, Plugin } from '@extism/extism';
+import './WasmComponent.css';
 
 /**
  * WasmComponent组件
@@ -10,6 +11,9 @@ const WasmComponent: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [plugin, setPlugin] = useState<Plugin | null>(null);
+  const [input, setInput] = useState<string>('');
+  const [jsonInput, setJsonInput] = useState<string>('{"name": "test", "value": "hello"}');
 
   useEffect(() => {
     // 加载并初始化Wasm插件
@@ -19,47 +23,30 @@ const WasmComponent: React.FC = () => {
         setError(null);
 
         console.log('开始加载Wasm文件...');
-        // 从public目录加载Wasm文件
-        const response = await fetch('/wasm/car_hello_world.wasm');
-        console.log('Wasm文件响应状态:', response.status);
+        const response = await fetch('/wasm/car_hello_world.wasm', {
+          headers: {
+            'Content-Type': 'application/wasm'
+          }
+        });
         
         if (!response.ok) {
           throw new Error(`Failed to load WASM file: ${response.statusText}`);
         }
         const wasmBuffer = await response.arrayBuffer();
-        console.log('Wasm文件大小:', wasmBuffer.byteLength, 'bytes');
 
-        console.log('创建插件实例...');
-        // 创建插件实例
-        const plugin: Plugin = await createPlugin(wasmBuffer, {
-          useWasi: true, // 启用WASI支持
+        const pluginInstance: Plugin = await createPlugin(wasmBuffer, {
+          useWasi: true,
         });
-        console.log('插件实例创建成功');
+        setPlugin(pluginInstance);
 
-        console.log('调用插件函数...');
-        // 调用插件的hello_world函数
-        const result = await plugin.call('hello_world');
-        console.log('插件调用结果:', result);
-        
+        const result: any = await pluginInstance.call('hello_world');
         if (!result) {
           throw new Error('Plugin call returned no result');
         }
 
-        // 正确处理插件返回的结果
-        const resultBuffer = result.buffer;
-        if (!resultBuffer) {
-          throw new Error('Plugin result buffer is empty');
-        }
-
-        // 使用TextDecoder解码结果
-        const text = new TextDecoder().decode(resultBuffer);
-        console.log('解码后的消息:', text);
-        
-        if (!text) {
-          throw new Error('Decoded message is empty');
-        }
-        
-        setMessage(text);
+        const text = new TextDecoder().decode(result);
+        console.log('Rust返回的消息 (直接解码):', text);
+        setMessage(text || '无返回消息');
       } catch (err: any) {
         console.error('WASM加载错误:', err);
         setError(err.message || '加载WebAssembly模块时发生错误');
@@ -69,9 +56,58 @@ const WasmComponent: React.FC = () => {
     };
 
     loadWasm();
-  }, []); // 空依赖数组确保效果只运行一次
+  }, []);
 
-  // 根据加载状态渲染不同内容
+  // 处理文本输入
+  const handleProcessInput = async () => {
+    if (!plugin) {
+      setError('插件未加载');
+      return;
+    }
+
+    try {
+      console.log('发送到Rust的文本:', input);
+      const result: any = await plugin.call('process_input', input);
+      console.log('Rust返回的原始结果:', result);
+      
+      if (!result) {
+        throw new Error('Plugin call returned no result');
+      }
+
+      const text = new TextDecoder().decode(result);
+      console.log('解码后的消息 (直接解码):', text);
+      setMessage(text || '无返回消息');
+    } catch (err: any) {
+      console.error('处理输入时发生错误:', err);
+      setError(err.message || '处理输入时发生错误');
+    }
+  };
+
+  // 处理JSON输入
+  const handleProcessJson = async () => {
+    if (!plugin) {
+      setError('插件未加载');
+      return;
+    }
+
+    try {
+      console.log('发送到Rust的JSON:', jsonInput);
+      const result: any = await plugin.call('process_json', jsonInput);
+      console.log('Rust返回的原始结果:', result);
+      
+      if (!result) {
+        throw new Error('Plugin call returned no result');
+      }
+
+      const text = new TextDecoder().decode(result);
+      console.log('解码后的JSON (直接解码):', text);
+      setMessage(text || '无返回消息');
+    } catch (err: any) {
+      console.error('处理JSON时发生错误:', err);
+      setError(err.message || '处理JSON时发生错误');
+    }
+  };
+
   if (loading) {
     return <div className="wasm-container">加载中...</div>;
   }
@@ -80,15 +116,48 @@ const WasmComponent: React.FC = () => {
     return (
       <div className="wasm-container">
         <h2>错误</h2>
-        <p style={{ color: 'red' }}>{error}</p>
+        <p className="error-message">{error}</p>
       </div>
     );
   }
 
   return (
     <div className="wasm-container">
-      <h2>WebAssembly插件消息</h2>
-      <p>{message}</p>
+      <div className="section">
+        <h2>Rust → JavaScript</h2>
+        <div className="result-box">
+          <h3>Rust返回的消息</h3>
+          <p className="message">{message}</p>
+        </div>
+      </div>
+
+      <div className="section">
+        <h2>JavaScript → Rust</h2>
+        <div className="input-group">
+          <h3>文本处理</h3>
+          <div className="input-box">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="输入要发送到Rust的文本"
+            />
+            <button onClick={handleProcessInput}>发送到Rust</button>
+          </div>
+        </div>
+
+        <div className="input-group">
+          <h3>JSON处理(将所有字符串值转换为大写)</h3>
+          <div className="input-box">
+            <textarea
+              value={jsonInput}
+              onChange={(e) => setJsonInput(e.target.value)}
+              placeholder="输入要发送到Rust的JSON"
+            />
+            <button onClick={handleProcessJson}>发送到Rust</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
