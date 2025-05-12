@@ -2,7 +2,7 @@
 
 ## 预览
 
-![预览](/web/public/wasm/product.png)
+![预览](https://github.com/juyufeng/cargo-rust/blob/master/web/public/wasm/product.png)
 
 <div align="center">
 
