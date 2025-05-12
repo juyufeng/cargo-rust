@@ -1,0 +1,158 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #2c3e50, #34495e);
+  color: white;
+  padding: 0 25px;
+  height: 70px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo svg {
+  margin-right: 10px;
+  width: 28px;
+  height: 28px;
+}
+
+.navbar-logo a {
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.navbar-logo a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #3498db, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  position: relative;
+  font-weight: 500;
+}
+
+.navbar-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #3498db;
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+.navbar-links a:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-links a.active {
+  color: white;
+  background: rgba(52, 152, 219, 0.2);
+  box-shadow: 0 2px 10px rgba(52, 152, 219, 0.2);
+}
+
+.navbar-links a.active::before {
+  width: 80%;
+}
+
+/* 移动端菜单按钮 */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 15px;
+  }
+  
+  .menu-button {
+    display: block;
+  }
+  
+  .navbar-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #2c3e50;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .navbar-links.show {
+    max-height: 300px;
+  }
+  
+  .navbar-links a {
+    padding: 15px 25px;
+    border-radius: 0;
+    width: 100%;
+  }
+  
+  .navbar-links a::before {
+    bottom: auto;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 3px;
+    height: 0;
+    transition: height 0.3s ease;
+  }
+  
+  .navbar-links a.active::before,
+  .navbar-links a:hover::before {
+    width: 3px;
+    height: 100%;
+  }
+} 

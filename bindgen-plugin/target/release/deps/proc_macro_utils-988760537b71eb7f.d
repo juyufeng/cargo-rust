@@ -1,0 +1,10 @@
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/bindgen-plugin/target/release/deps/libproc_macro_utils-988760537b71eb7f.rmeta: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/parser.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/assert.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/__private.rs
+
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/bindgen-plugin/target/release/deps/libproc_macro_utils-988760537b71eb7f.rlib: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/parser.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/assert.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/__private.rs
+
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/bindgen-plugin/target/release/deps/proc_macro_utils-988760537b71eb7f.d: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/parser.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/assert.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/__private.rs
+
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/lib.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/parser.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/assert.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro-utils-0.10.0/src/__private.rs:

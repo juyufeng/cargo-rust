@@ -1,0 +1,11 @@
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/extism-plugin/target/release/deps/libmanyhow-f0db42c9e79453fd.rmeta: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/span_ranged.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/macro_rules.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/error.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/parse_to_tokens.rs
+
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/extism-plugin/target/release/deps/libmanyhow-f0db42c9e79453fd.rlib: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/span_ranged.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/macro_rules.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/error.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/parse_to_tokens.rs
+
+/Users/apple/Desktop/jyf-fashion-cars/cargo-rust/extism-plugin/target/release/deps/manyhow-f0db42c9e79453fd.d: /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/lib.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/span_ranged.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/macro_rules.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/error.rs /Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/parse_to_tokens.rs
+
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/lib.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/span_ranged.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/macro_rules.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/error.rs:
+/Users/apple/.cargo/registry/src/index.crates.io-6f17d22bba15001f/manyhow-0.11.4/src/parse_to_tokens.rs:

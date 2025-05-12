@@ -1,6 +1,8 @@
 //! car-hello-world Wasm插件
 //! 这是一个基于Extism框架的示例插件，用于演示WebAssembly与React+Electron的集成
 
+mod bindgen_example;
+
 use extism_pdk::*;
 use serde_json::{Value, Map};
 
