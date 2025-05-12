@@ -122,40 +122,123 @@
 }
 
 .input-group {
+  margin-bottom: 1.5rem;
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.input-group input {
-  flex: 1;
-  min-width: 200px;
-  padding: 8px 12px;
-  border: 1px solid #ced4da;
+.input-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.input-group input[type="number"] {
-  width: 100px;
-  flex: 0 0 100px;
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* 确保placeholder颜色可见 */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #999;
 }
 
 .input-group button {
-  padding: 8px 16px;
-  background-color: #007bff;
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
   color: white;
   border: none;
   border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-  white-space: nowrap;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+  margin-top: 0.5rem;
 }
 
 .input-group button:hover {
-  background-color: #0056b3;
+  background-color: #2980b9;
+}
+
+.output-container {
+  margin-top: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.output-container h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.output-text,
+.output-json {
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  min-height: 3rem;
+  word-break: break-word;
+  font-family: 'Courier New', monospace;
+  color: #333;
+}
+
+.output-json {
+  white-space: pre-wrap;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #ffdddd;
+  border: 1px solid #ff8888;
+  border-radius: 4px;
+  color: #d63031;
+}
+
+/* 响应式布局 */
+@media (min-width: 768px) {
+  .input-group {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .input-group label {
+    width: 100%;
+  }
+  
+  .input-group input {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .input-group textarea {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .input-group button {
+    margin-top: 0;
+    margin-left: 1rem;
+  }
 }
 
 .result-box {
@@ -188,14 +271,6 @@
   overflow-x: auto;
 }
 
-.error-message {
-  color: #dc3545;
-  background-color: #f8d7da;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #f5c6cb;
-}
-
 .loading {
   text-align: center;
   color: #6c757d;
@@ -216,4 +291,35 @@
   border-radius: 3px;
   font-size: 12px;
   animation: fadeIn 0.3s ease;
+}
+
+.loading-status {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  border-left: 4px solid #3498db;
+  color: #333;
+  font-weight: 500;
+}
+
+.reload-button {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reload-button:hover {
+  background-color: #2980b9;
+}
+
+.reload-button:active {
+  background-color: #2471a3;
 } 

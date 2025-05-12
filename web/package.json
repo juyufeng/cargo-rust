@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "build:extism": "cd ../extism-plugin && cargo build --release --target wasm32-wasi && echo 'Contents of target/wasm32-wasi/release:' && ls -l target/wasm32-wasi/release && mkdir -p ../web/public/wasm && cp target/wasm32-wasi/release/car_hello_world.wasm ../web/public/wasm/extism_plugin.wasm",
-    "build:bindgen": "cd /Users/apple/Desktop/jyf-fashion-cars/bindgen-plugin && wasm-pack build --target web --out-dir /Users/apple/Desktop/jyf-fashion-cars/web/src/wasm-bindgen",
+    "build:bindgen": "cd ../bindgen-plugin && wasm-pack build --target web --out-dir ../web/public/wasm",
     "build:wasm": "npm run build:extism && npm run build:bindgen",
     "type-check": "tsc --noEmit",
     "electron:dev": "tsc && electron .",
