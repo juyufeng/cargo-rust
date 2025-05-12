@@ -1,102 +1,147 @@
-# Car Hello World
+# 🚀 Rust + React WebAssembly 演示项目
 
-这是一个基于Extism框架的Rust WebAssembly插件示例项目，展示了如何在React19 + Electron环境中集成和使用WebAssembly模块。
+<div align="center">
 
-## 项目特点
+![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=for-the-badge&logo=webassembly&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-- 使用Rust编写WebAssembly插件
-- 基于Extism框架开发
-- React19 + Electron前端集成
-- 本地CPU执行，无远程调用
-- 支持动态加载Wasm模块
+</div>
 
-## 项目结构
+## ✨ 项目简介
 
-```
-cargo-rust/
-├── rust/                    # Rust插件代码
-│   ├── src/
-│   │   └── lib.rs          # Rust插件源码
-│   └── Cargo.toml          # Rust项目配置
-│
-├── web/                     # React调试环境
-│   ├── src/
-│   │   ├── components/     # React组件
-│   │   │   └── WasmComponent.tsx
-│   │   ├── main.ts         # Electron主进程
-│   │   └── index.tsx       # React入口
-│   └── public/
-│       └── wasm/          # Wasm文件存放目录
-```
+这是一个展示 Rust 与 WebAssembly 在 Web 开发中强大能力的现代化演示项目。通过结合 Rust 的高性能与 React 的灵活性，我们创建了一个既快速又用户友好的 Web 应用。
 
-## 环境要求
+## 🌟 主要特性
 
-- Rust工具链（包含cargo）
-- Node.js 18+
-- wasm32-wasi目标支持
+- 🚀 **高性能计算**：利用 Rust 和 WebAssembly 实现接近原生的性能
+- 🎨 **现代化 UI**：采用 React + TypeScript 构建响应式用户界面
+- 🔌 **双重 WebAssembly 集成**：
+  - 使用 `wasm-bindgen` 实现 Rust 与 JavaScript 的无缝交互
+  - 通过 `extism` 支持 WASI 插件系统
+- 📱 **响应式设计**：完美适配各种设备尺寸
+- 🎯 **类型安全**：全程 TypeScript 支持，提供更好的开发体验
 
-## 安装步骤
+## 🛠️ 技术栈
 
-1. 添加wasm32-wasi目标：
+### 前端
+- React 18
+- TypeScript
+- Vite
+- React Router
+- Modern CSS
+
+### Rust & WebAssembly
+- Rust 2021
+- wasm-bindgen
+- extism-pdk
+- wasm-pack
+
+## 🚀 快速开始
+
+### 环境要求
+- Node.js >= 18.0.0
+- Rust >= 1.70.0
+- wasm-pack
+- cargo-wasi
+
+### 安装步骤
+
+1. **克隆项目**
 ```bash
-rustup target add wasm32-wasi
+git clone https://github.com/yourusername/rust-react-wasm-demo.git
+cd rust-react-wasm-demo
 ```
 
-2. 安装项目依赖：
+2. **安装依赖**
 ```bash
+# 安装前端依赖
 cd web
 npm install
+
+# 安装 Rust 依赖
+cd ../rust
+cargo build
 ```
 
-## 构建说明
-
-1. 构建Wasm模块：
+3. **构建 WebAssembly 模块**
 ```bash
-cd web
-npm run build:wasm
-```
-生成的Wasm文件位于 `web/public/wasm/car_hello_world.wasm`
+# 构建 wasm-bindgen 模块
+wasm-pack build --target web
 
-2. 构建前端应用：
-```bash
-cd web
-npm run build
+# 构建 WASI 模块
+cargo build --target wasm32-wasi
 ```
 
-## 开发模式
-
-1. 启动开发服务器：
+4. **启动开发服务器**
 ```bash
-cd web
+cd ../web
 npm run dev
 ```
 
-2. 在新终端启动Electron：
-```bash
-cd web
-npm start
+## 📦 项目结构
+
+```
+.
+├── web/                 # 前端项目目录
+│   ├── src/            # 源代码
+│   ├── public/         # 静态资源
+│   └── package.json    # 前端依赖配置
+│
+└── rust/               # Rust 项目目录
+    ├── src/            # Rust 源代码
+    └── Cargo.toml      # Rust 依赖配置
 ```
 
-## 使用说明
+## 🎯 功能演示
 
-1. 构建Wasm模块后，将生成的`car_hello_world.wasm`文件上传到OSS或其他可访问的位置
-2. 在`WasmComponent.tsx`中更新Wasm文件的URL
-3. 启动应用程序，查看WebAssembly模块的执行结果
+### 1. wasm-bindgen 演示
+- 用户信息处理
+- 斐波那契数列计算
+- 字符串处理
+- 数组操作
 
-## 注意事项
+### 2. Extism WASI 插件演示
+- 文本处理
+- JSON 数据转换
+- 高性能计算
 
-- 确保Wasm文件的URL可以正常访问
-- 开发模式下需要同时运行开发服务器和Electron
-- 生产环境部署前需要更新Wasm文件的实际URL
+## 🔧 开发指南
 
-## CI/CD
+### 添加新的 Rust 函数
 
-项目包含GitHub Actions配置，可以自动执行以下任务：
+1. 在 `rust/src/lib.rs` 中添加新函数
+2. 使用 `#[wasm_bindgen]` 标记需要导出的函数
+3. 重新构建 WebAssembly 模块
+4. 在前端组件中导入并使用
 
-- 构建Wasm模块
-- 构建前端应用
-- 上传构建产物
+### 创建新的 WASI 插件
 
-## 许可证
+1. 在 `rust/src/` 下创建新的插件文件
+2. 实现插件接口
+3. 使用 `cargo build --target wasm32-wasi` 构建
+4. 将生成的 .wasm 文件放入 `web/public/wasm/` 目录
 
-MIT
+## 📝 贡献指南
+
+欢迎提交 Pull Request 或创建 Issue！在提交之前，请确保：
+
+1. 代码符合项目规范
+2. 添加了必要的测试
+3. 更新了相关文档
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 👥 作者
+
+- 您的名字 - [@yourusername](https://github.com/yourusername)
+
+## 🙏 致谢
+
+- [Rust 团队](https://www.rust-lang.org/)
+- [WebAssembly](https://webassembly.org/)
+- [React 团队](https://reactjs.org/)
+- [Extism](https://extism.org/)
